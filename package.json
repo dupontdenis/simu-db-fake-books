@@ -1,0 +1,17 @@
+{
+  "name": "simu-db",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "- Install npm dependencies: `npm install`\r - Start the server: `npm start`\r - Access Web App at: `http://127.0.0.1:8080`",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "SUPERDUPONT",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
+}
