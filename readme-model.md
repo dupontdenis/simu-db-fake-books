@@ -32,6 +32,36 @@ Returns the first book matching the query object. If no query is provided, retur
 - **Usage:**
   - `findOne({ author: 'Harper Lee' })` returns the first book with author 'Harper Lee'.
   - `findOne()` returns the first book in the collection.
+ 
+- **Example:**
+
+```js
+const BOOKS = [
+  { title: "1984", author: "George Orwell", year: 1949, genre: "Dystopian" },
+  { title: "Animal Farm", author: "George Orwell", year: 1945, genre: "Political Satire" },
+  { title: "Le Petit Prince", author: "Antoine de Saint-Exupéry", year: 1943, genre: "Fable" },
+  { title: "The Hobbit", author: "J.R.R. Tolkien", year: 1937, genre: "Fantasy" }
+];
+
+export const findOne = (query = null) => {
+  if (!query || Object.keys(query).length === 0) {
+    return BOOKS[0] || null;
+  }
+  return (
+    BOOKS.find((book) => {
+      return Object.entries(query).every(([key, value]) => book[key] === value);
+    }) || null
+  );
+};
+
+// 🔍 Tests
+console.log(findOne()); // ➜ { title: "1984", ... }
+console.log(findOne({ author: "George Orwell" })); // ➜ { title: "1984", ... }
+console.log(findOne({ author: "George Orwell", year: 1945 })); // ➜ { title: "Animal Farm", ... }
+console.log(findOne({ genre: "Fantasy" })); // ➜ { title: "The Hobbit", ... }
+console.log(findOne({ author: "Unknown" })); // ➜ null
+
+```
 
 ### findById(id)
 
